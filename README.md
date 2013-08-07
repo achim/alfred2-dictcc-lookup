@@ -13,19 +13,18 @@ Installation (using [Homebrew](http://brew.sh)):
 
 1. Install Go:
 
-    * `brew install go`
-	* Set up your `PATH` and `GOPATH` enviroment variables as described in http://golang.org/doc/install#install (Make sure to also set these up for bash, even if that's not your shell of choice!)
-        
+* `brew install go`
+* Set up your `PATH` and `GOPATH` enviroment variables as described in http://golang.org/doc/install#install (Make sure to also set these up for bash, even if that's not your shell of choice!)
+
 2. Install Kyoto Cabinet:
 
-	`brew install kyoto-cabinet`
+`brew install kyoto-cabinet`
 
 3. Download and install the executable:
 
-	`go get github.com/achim/alfred2-dictcc-lookup`
+`go get github.com/achim/alfred2-dictcc-lookup`
 
 4. Download and import the workflow:
 
-   * `curl -LO 'https://github.com/achim/alfred2-dictcc-lookup/raw/master/alfred2-dictcc-lookup.alfredworkflow'`
-   * `open open alfred2-dictcc-lookup.alfredworkflow`
-
+* `curl -LO 'https://github.com/achim/alfred2-dictcc-lookup/raw/master/alfred2-dictcc-lookup.alfredworkflow'`
+* `open open alfred2-dictcc-lookup.alfredworkflow`
