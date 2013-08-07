@@ -14,9 +14,8 @@ Installation (using [Homebrew](http://brew.sh)):
 1. Install Go:
 
     * `brew install go`
-	* Set up your enviroment as described in http://golang.org/doc/install#install
-    * 
-    
+	* Set up your `PATH` and `GOPATH` enviroment variables as described in http://golang.org/doc/install#install (Make sure to also set these up for bash, even if that's not your shell of choice!)
+        
 2. Install Kyoto Cabinet:
 
 	`brew install kyoto-cabinet`
