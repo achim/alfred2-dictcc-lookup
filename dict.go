@@ -1,6 +1,7 @@
 package main
 
 import (
+	"code.google.com/p/go.text/unicode/norm"
 	"encoding/xml"
 	"fmt"
 	"github.com/PuerkitoBio/goquery"
@@ -49,7 +50,7 @@ func makeItem(db *kc.DB, word string, lang int) Item {
 		Title:    word + " [" + label[lang] + "]",
 		Subtitle: getTranslations(db, word, lang),
 		Icon:     iconpaths[lang],
-		Arg:      fmt.Sprintf(urlformat[lang], word)}
+		Arg:      fmt.Sprintf(urlformat[lang], url.QueryEscape(word))}
 }
 
 func suggestions(db *kc.DB, s string) (suggs []Item, err error) {
@@ -74,7 +75,7 @@ func suggestions(db *kc.DB, s string) (suggs []Item, err error) {
 		lang int
 	)
 	c := make(chan bool, resultlen)
-	for i := range lines {
+	for i := range suggs {
 		go func(i int) {
 			line = strings.Split(lines[i], "\t")
 			lang, err = strconv.Atoi(line[1])
@@ -119,8 +120,8 @@ func scrapeTranslations(word string, lang int) (trans []string) {
 		done <- true
 	}()
 	select {
-	case <- done:
-	case <- timeout:
+	case <-done:
+	case <-timeout:
 	}
 	return
 }
@@ -141,7 +142,7 @@ func main() {
 		panic(err)
 	}
 	defer db.Close()
-	suggs, err := suggestions(db, os.Args[1])
+	suggs, err := suggestions(db, norm.NFC.String(os.Args[1]))
 	if err != nil {
 		panic(err)
 	}
